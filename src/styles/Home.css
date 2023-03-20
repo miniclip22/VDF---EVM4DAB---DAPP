@@ -1,5 +1,39 @@
+
+
+html, body {
+  min-height: 100%;
+}
+
 .container {
-  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.container2 {
+  background: url("https://b2bblogassets.airtel.in/wp-content/uploads/2022/05/iot-based-smart-parking-scaled.jpg");
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-size:cover;
+  background: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 300px;
+}
+
+.img{
+  background: url("https://images.ctfassets.net/pnliwdxhy0tx/zT01WxSElaJ2BQUeZyIjk/d50127be0ea6e143484029c7345de39d/smart-parking-50.jpg");
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-size:cover;
+  background: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 300px;
 }
 
 .main {
@@ -35,8 +69,10 @@
 }
 
 .connect {
-  margin-bottom: 2rem;
+  margin-top: 1rem;
   width: 230px;
+  display: flex;
+  justify-content: center;
 }
 
 .description {
