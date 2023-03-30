@@ -1,3 +1,6 @@
+const HDWalletProvider = require("@truffle/hdwallet-provider");
+require("dotenv").config();
+
 /**
  * Use this file to configure your truffle project. It's seeded with some
  * common settings for different networks and features like migrations,
@@ -68,7 +71,18 @@ module.exports = {
     ganache: {
       host: "127.0.0.1", // Localhost (default: none)
       port: 7545, // Standard Ethereum port (default: none)
-      network_id: "1337" // Any network (default: none)
+      network_id: "1337", // Any network (default: none)
+    },
+    vodafone: {
+      provider: function () {
+        return new HDWalletProvider(
+          process.env.VODAFONE_NODEREAL_ACCOUNT_PRIVATE_KEY,
+          process.env.TRUFFLE_PROVIDER_URL
+        );
+      },
+      // accounts: ["0x4858d3E1ae140F3897657922D72c3C35e800Ed60"],
+      network_id: "923020",
+      from: "0x4858d3E1ae140F3897657922D72c3C35e800Ed60",
     },
     //
     // An additional network, but with some advanced options…
