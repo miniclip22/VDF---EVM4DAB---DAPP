@@ -1,0 +1,19 @@
+.license-plate-scan-container {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.license-plate-row {
+    display: flex;
+    flex-direction: column;
+}
+
+.license-plate-scan-buttons-container {
+    padding-top: 40px;
+}
+
+
