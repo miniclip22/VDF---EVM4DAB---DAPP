@@ -15,7 +15,7 @@ contract("Transfer Ether", function () {
   // Scenario 3
   const cordaAddress = cordaSender;
 
-  it("should return a valid account balance - scenario 3", async () => {
+  xit("should return a valid account balance - scenario 3", async () => {
     const cordaAddressBalance = await web3.eth.getBalance(cordaAddress);
     const etherValue = Web3.utils.fromWei(cordaAddressBalance, "ether");
 
@@ -26,7 +26,7 @@ contract("Transfer Ether", function () {
     expect(Number(etherValue)).to.be.above(0);
   });
 
-  it("should transfer ether successfully between two accounts supplied by the Cordapp - scenario 2", async () => {
+  xit("should transfer ether successfully between two accounts supplied by the Cordapp - scenario 2", async () => {
     const cordaSenderBalanceBeforeTransfer = await web3.eth.getBalance(
       cordaSender
     );

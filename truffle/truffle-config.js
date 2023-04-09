@@ -48,6 +48,7 @@ require("dotenv").config();
 // const { MNEMONIC, PROJECT_ID } = process.env;
 
 // const HDWalletProvider = require('@truffle/hdwallet-provider');
+const privateKeys = process.env.PRIVATE_KEYS.split(",");
 
 module.exports = {
   /**
@@ -76,7 +77,7 @@ module.exports = {
     vodafone: {
       provider: function () {
         return new HDWalletProvider(
-          process.env.VODAFONE_NODEREAL_ACCOUNT_PRIVATE_KEY,
+          privateKeys,
           process.env.TRUFFLE_PROVIDER_URL
         );
       },
