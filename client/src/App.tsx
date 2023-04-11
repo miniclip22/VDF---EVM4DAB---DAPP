@@ -18,6 +18,9 @@ import LicensePlateScanScreen from "./pages/licensePlateScanScreen/LicensePlateS
 import OpenGateScreen from "./pages/openGate/OpenGateScreen";
 import ExitGateScreen from "./pages/exitGate/ExitGateScreen";
 import ProcessPaymentScreen from "./pages/processPaymentScreen/ProcessPaymentScreen";
+import OpenExitGate from "./pages/openExitGate/OpenExitGate";
+// create a css file global for all pages 
+
 
 function App(): JSX.Element {
   return (
@@ -29,6 +32,7 @@ function App(): JSX.Element {
           <Route path="/open-gate" element={<OpenGateScreen />} />
           <Route path="/exit-gate" element={<ExitGateScreen />} />
           <Route path="/process-exit-payment" element={<ProcessPaymentScreen />} />
+          <Route path="/open-exit-gate" element={<OpenExitGate/>} />
 
         </Routes>
       </Router>

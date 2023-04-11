@@ -16,11 +16,11 @@ const ExitGateScreen = (): JSX.Element => {
     useEffect(() => {
         const timeout1 = setTimeout(() => {
             setSessionHash("session-id-1234");
-        }, 3000);
+        }, 5000);
 
         const timeout2 = setTimeout(() => {
             setSessionHashDecrypted(true);
-        }, 5000);
+        }, 10000);
 
         // Cleanup function to clear timeouts if component unmounts or data is set
         return () => {
@@ -45,10 +45,12 @@ const ExitGateScreen = (): JSX.Element => {
             return (
                 <Row>
                     <Col xs={11}>
-                        Getting DAB session ID for licence plate {licensePlate}
+                        <h3>Getting DAB session ID for licence plate {licensePlate}</h3>
+                        
+                        <Spinner animation="border" variant="primary" />
                     </Col>
                     <Col xs={1}>
-                        <Spinner animation="border" variant="primary" />
+                        
                     </Col>
                 </Row>
             );
@@ -57,8 +59,8 @@ const ExitGateScreen = (): JSX.Element => {
             return (
                 <Row>
                     <Col>
-                        Success. Session hash found for car with license plate{" "}
-                        {licensePlate}: {sessionHash}. <br /> Decrypting session hash...
+                        <h3>Success. <br /> Session hash found for car with license plate{" "}
+                        {licensePlate}: {sessionHash}. <br /> Decrypting session hash...</h3>
                     </Col>
                 </Row>
             );
@@ -74,12 +76,12 @@ const ExitGateScreen = (): JSX.Element => {
                             <Row>
                                 <Col>
                                     <ul>
-                                        <li>Rate: rate</li>
-                                        <li>Started at block: startedAtBlock</li>
-                                        <li>User: user</li>
-                                        <li>Car: car</li>
-                                        <li>Organisation: organisation</li>
-                                        <li>Arm device: armDevice</li>
+                                        <li><h3>Rate: rate</h3></li>
+                                        <li><h3>Started at block: startedAtBlock</h3></li>
+                                        <li><h3>User: user</h3></li>
+                                        <li><h3>Car: car</h3></li>
+                                        <li><h3>Organisation: organisation</h3></li>
+                                        <li><h3>Arm device: armDevice</h3></li>
                                     </ul>
                                 </Col>
                             </Row>
@@ -107,7 +109,7 @@ const ExitGateScreen = (): JSX.Element => {
             return (
                 <Row>
                     <Col>
-                        Processing data for {licensePlate} <br /> Please wait.
+                        <h3>Processing data for {licensePlate} <br /> Please wait.</h3>
                     </Col>
                 </Row>
             );
@@ -121,13 +123,13 @@ const ExitGateScreen = (): JSX.Element => {
                     <Row>
                         <Col>
 
-                            Data processing successful. Car: Mercedes, Model: C200, organization: Vodafone. <br />
+                            <h3>Data processing successful. <br /> Car: Mercedes, <br /> Model: C200, <br /> organization: Vodafone.</h3> <br />
                             <Button
                                 variant="primary"
                                 size="lg"
                                 onClick={handleProceedToPaymentScreen}
                             >
-                                Please proceed to payment.
+                                <h3>Please proceed to payment.</h3>
                             </Button>
                         </Col>
                     </Row>

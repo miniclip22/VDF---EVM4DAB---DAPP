@@ -18,18 +18,20 @@ function Home(): JSX.Element {
           <Col>
             <h1>License Plate: </h1>
           </Col>
+          
           <Col>
             <Row className={"parking-intro-row"}>
               <Col>
                 <h1>Welcome to the Parking Service.</h1>
               </Col>
+              <br />
               <Col>
                 <Button
                   variant="primary"
                   size="lg"
                   onClick={handleStartParkingSessionClick}
                 >
-                  Start Parking Session
+                  <h4>Start Parking Session</h4>
                 </Button>
               </Col>
             </Row>

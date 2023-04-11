@@ -11,11 +11,11 @@ function OpenGateScreen(): JSX.Element {
   let licensePlate = location.state.licensePlate;
   const navigate = useNavigate();
 
-  const [sessionId, setSessionId] = useState<string>("");
+  const [sessionHash, setSessionHash] = useState<string>("");
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setSessionId("session-id-1234");
+      setSessionHash("Session-Hash-1234");
     }, 5000);
     return () => clearTimeout(timer);
   }, []);
@@ -32,6 +32,7 @@ function OpenGateScreen(): JSX.Element {
           <Col>
             <h1>Getting DAB device ID for licence plate {licensePlate}</h1>
           </Col>
+          {/* <Col xs="auto" className="left-border"></Col> */}
           <Col>
             <h1>
               Please move forward when the gate opens. <br /> Welcome to our
@@ -42,32 +43,37 @@ function OpenGateScreen(): JSX.Element {
               variant="primary"
               size="lg"
               onClick={handleOpenGateScreen}
+              disabled={sessionHash === ''}
             >
-              Simulate Parking Exit!
+              <h3>Simulate Parking Exit!</h3>
             </Button>
           </Col>
         </Row>
 
         <Row>
           {/* // TODO: Optionally remove the react grid (column and rows) and do this with pure CSS */}
-          {sessionId === '' ? (<Col>
+          {sessionHash === '' ? (<Col>
             <Row>
               <Col xs={11}>
-                Checking with DAB to see if the car can enter the park (open gate)
+                <h2>Checking with DAB to see if the car <br /> can enter the park (open gate)</h2>
+                <br />
+                <br />
+                <Spinner animation="border" variant="primary" style={{ width: "50px", height: "50px" }}/>
               </Col>
-              <Col xs={1}><Spinner animation="border" variant="primary" /></Col>
+              
             </Row>
 
           </Col>) : (
             <Col>
               <Row>
                 <Col>
-                  Success. Opening gate. Session ID: {sessionId}.
+                  <h2>Success. Opening gate. Session Hash: {sessionHash}.</h2>
                 </Col>
               </Row>
+              <br />
               <Row>
                 <Col>
-                  <CheckCircleIcon sx={{ fontSize: "40px" }} />
+                  <CheckCircleIcon sx={{ fontSize: "50px" }} />
                 </Col>
               </Row>
             </Col>

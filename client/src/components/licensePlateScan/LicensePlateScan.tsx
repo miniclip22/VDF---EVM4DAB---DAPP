@@ -43,6 +43,7 @@ function LicensePlateScan({ licensePlateButtonScanSuccessText, licensePlateButto
           <Col>
             <h1>License Plate: {licensePlate}</h1>
           </Col>
+          
           <Col>
             <Row className={"license-plate-row"}>
               <Col>
@@ -52,7 +53,7 @@ function LicensePlateScan({ licensePlateButtonScanSuccessText, licensePlateButto
                 <Row>
                   <Col>
                     <DocumentScannerIcon
-                      sx={{ fontSize: "40px" }}
+                      sx={{ fontSize: "50px" }}
                       onClick={handleRescanLicensePlace}
                     />
                     <Row>
@@ -60,9 +61,10 @@ function LicensePlateScan({ licensePlateButtonScanSuccessText, licensePlateButto
                     </Row>
                   </Col>
                   <Col>
-                    <VerifiedIcon sx={{ fontSize: "40px" }} />
+                    <VerifiedIcon sx={{ fontSize: "50px" }} />
                     <Row>
                       <Col>
+                      <br />
                         <Button
                           variant="primary"
                           size="lg"

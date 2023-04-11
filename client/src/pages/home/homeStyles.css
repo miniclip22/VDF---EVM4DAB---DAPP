@@ -11,3 +11,9 @@
     display: flex;
     flex-direction: column;
 }
+
+.left-border {
+    border-left: 1px solid black;
+    height: 600px;
+  }
+  
