@@ -3,21 +3,45 @@ import React, { useEffect, useState } from "react";
 import "./LicensePlateScanStyles.css";
 import DocumentScannerIcon from "@mui/icons-material/DocumentScanner";
 import VerifiedIcon from "@mui/icons-material/Verified";
+import { NavigateFunction, useNavigate } from "react-router-dom";
 
-function LicensePlateScan(): JSX.Element {
+interface LicensePlateProps {
+  licensePlateButtonScanSuccessText: string;
+  licensePlateButtonScanSucessRoute: string;
+  getExitGatelicensePlate?: (data: string) => void;
+
+
+}
+
+function LicensePlateScan({ licensePlateButtonScanSuccessText, licensePlateButtonScanSucessRoute, getExitGatelicensePlate }: LicensePlateProps): JSX.Element {
+  const navigate: NavigateFunction = useNavigate();
   // useState hook to store the licence plate number
   const [licensePlate, setLicensePlate] = useState<string>("61A495J");
+  if (getExitGatelicensePlate) {
+    getExitGatelicensePlate(licensePlate);
+  }
+
+
 
   const handleRescanLicensePlace = (): void => {
     setLicensePlate("61A49YX");
   };
+
+  const handleLicensePlateSuccess = (): void => {
+    navigate(licensePlateButtonScanSucessRoute, {
+      state: {
+        licensePlate: licensePlate,
+      }
+    });
+  };
+
 
   return (
     <div className={"license-plate-scan-container"}>
       <Container fluid>
         <Row>
           <Col>
-            <h1>Licence Plate: {licensePlate}</h1>
+            <h1>License Plate: {licensePlate}</h1>
           </Col>
           <Col>
             <Row className={"license-plate-row"}>
@@ -38,8 +62,15 @@ function LicensePlateScan(): JSX.Element {
                   <Col>
                     <VerifiedIcon sx={{ fontSize: "40px" }} />
                     <Row>
-                      {/*TODO: Implement next flows*/}
-                      <Col>Validate and Proceed</Col>
+                      <Col>
+                        <Button
+                          variant="primary"
+                          size="lg"
+                          onClick={handleLicensePlateSuccess}
+                        >
+                          {licensePlateButtonScanSuccessText}
+                        </Button>
+                      </Col>
                     </Row>
                   </Col>
                 </Row>
