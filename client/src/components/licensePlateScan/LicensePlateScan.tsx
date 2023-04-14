@@ -61,6 +61,10 @@ function LicensePlateScan({ licensePlateButtonScanSuccessText, licensePlateButto
                     </Row>
                   </Col>
                   <Col>
+                  </Col>
+                  <Col>
+                  </Col>
+                  <Col>
                     <VerifiedIcon sx={{ fontSize: "50px" }} />
                     <Row>
                       <Col>

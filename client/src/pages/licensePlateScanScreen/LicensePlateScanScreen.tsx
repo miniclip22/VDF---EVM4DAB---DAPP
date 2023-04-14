@@ -7,7 +7,7 @@ function LicensePlateScanScreen(): JSX.Element {
   return (
     <div>
       <LicensePlateScan
-        licensePlateButtonScanSuccessText="Validate and proceed."
+        licensePlateButtonScanSuccessText="Validate!"
         licensePlateButtonScanSucessRoute="/open-gate"
       />
     </div>

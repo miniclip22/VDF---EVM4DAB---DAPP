@@ -4,6 +4,7 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { useNavigate, useLocation } from "react-router-dom";
 import DocumentScannerIcon from "@mui/icons-material/DocumentScanner";
 import VerifiedIcon from "@mui/icons-material/Verified";
+import "./ProcessPaymentScreenStyles.css";
 
 
 // TODO: put this in reusable components
@@ -63,22 +64,25 @@ const ProcessPaymentScreen = (): JSX.Element => {
     const renderSystemTimeInformation = (): JSX.Element => {
         if (timeElapsedinMinutes === 0) {
             return (
-                <Row>
+                <Container fluid style={{ marginTop: "100px", display: "flex", flexDirection: "column", justifyContent: "center", textAlign: "center" }}>
+                <Row className="rowStyle">
                     <Col xs={6}>
-                        <h3>Calculating time elapsed. Please wait.</h3>
+                        <h3>Calculating time elapsed. Please wait.   <Spinner animation="border" variant="primary" /></h3>
+                        
                     </Col>
-                    <Col xs={1}>
-                        <Spinner animation="border" variant="primary" />
-                    </Col>
+                   
                 </Row>
+                </Container>
             );
         } else {
             return (
+                <Container fluid style={{ marginTop: "100px", display: "flex", flexDirection: "column", justifyContent: "center", textAlign: "center" }}>
                 <Row>
                     <Col>
                        <h3> Time elapsed: {timeElapsedinMinutes} minutes. <br /> </h3>
                     </Col>
                 </Row>
+                </Container>
             );
         }
     };
@@ -86,22 +90,25 @@ const ProcessPaymentScreen = (): JSX.Element => {
     const renderSystemPaymentInformation = (): JSX.Element => {
         if (totalPayment === 0) {
             return (
-                <Row>
+                <Container fluid style={{ marginTop: "100px", display: "flex", flexDirection: "column", justifyContent: "center", textAlign: "center" }}>
+                <Row className="rowStyle">
                     <Col xs={6}>
-                       <h3>Calculating total payment. Please wait. </h3> 
+                       <h3>Calculating total payment. Please wait.   <Spinner animation="border" variant="primary" /></h3> 
                     </Col>
-                    <Col xs={1}>
-                        <Spinner animation="border" variant="primary" />
-                    </Col>
+                    
                 </Row>
+                </Container>
+
             );
         } else {
             return (
+                <Container fluid style={{ marginTop: "100px", display: "flex", flexDirection: "column", justifyContent: "center", textAlign: "center" }}>
                 <Row>
-                    <Col>
+                  
                        <h3> Total Payment: {totalPayment} Euro. <br /> </h3>
-                    </Col>
+                   
                 </Row>
+                </Container>
             );
         }
     };
@@ -110,6 +117,7 @@ const ProcessPaymentScreen = (): JSX.Element => {
         if (paymentBeingProcessed) {
             return (
                 <>
+                <Container fluid style={{ marginTop: "100px", display: "flex", flexDirection: "column", justifyContent: "center", textAlign: "center" }}> 
                     <Row>
                         <Col>
                             <h2>Payment autorized and being processed...</h2>
@@ -129,6 +137,7 @@ const ProcessPaymentScreen = (): JSX.Element => {
                         
                         </Col>
                     </Row>
+
                     <br />
 
                     <Row>
@@ -140,7 +149,7 @@ const ProcessPaymentScreen = (): JSX.Element => {
                         
                         </Col>
                     </Row>
-
+                    </Container>
                     </>
                     );
         }
@@ -157,9 +166,9 @@ const ProcessPaymentScreen = (): JSX.Element => {
         return (<Col>
                         <Row>
                             <Col className={""}>
-                                <Row>
+                                <Row className="btnsRow">
                                     {paymentBeingProcessed === false ? (
-                                        <Col>
+                                        <Col className="btns">
                                             <DocumentScannerIcon sx={{ fontSize: '50px' }} />
                                             <Row>
                                                 <Col>
@@ -168,11 +177,11 @@ const ProcessPaymentScreen = (): JSX.Element => {
                                             </Row>
                                         </Col>
                                     ) : null}
-                                    <Col>
+                                    <Col className="btns">
                                         <VerifiedIcon sx={{ fontSize: "50px" }} />
                                         <Row>
                                             <Col>
-                                                <br />
+                                               
                                                 <Button
                                                     variant="primary"
                                                     size="lg"
@@ -198,9 +207,10 @@ const ProcessPaymentScreen = (): JSX.Element => {
         if (timeElapsedinMinutes > 0) {
             return (<Col>
                         <Row>
-                            <Col>
+                    
+                                
                                <h3> License Plate: {licensePlate}, <br /> Entry time: 12:00, <br /> Exit time: 12:50 </h3>
-                            </Col>
+                            
                         </Row>
                     </Col>);
         }
