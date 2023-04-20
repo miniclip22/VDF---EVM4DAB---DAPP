@@ -30,3 +30,31 @@ html{
 .btnsRow{
     width: 300px;
 }
+
+.center{
+    display: flex;
+    justify-content: center;
+}
+
+.payment-Buttons-Container{
+    display: flex;
+    justify-content: center;
+}
+
+.payment-confirmation-container{
+    display: "flex"; 
+    flex-direction: "column"; 
+    justify-content: "center"; 
+    text-align: "center"
+}
+
+
+.payment-confirmation-text{
+    display: inline-flex;
+}
+
+
+.payment-confirmation-spinner{
+    margin-left: 10px ;
+}
+

@@ -157,7 +157,16 @@ const ExitGateScreen = (): JSX.Element => {
     }
 
     return (
-        // TODO: send via props the lienense plate number to the exit gate screen
+        <>
+    <Row>
+      <Col className="page-name-container">
+        <h1>System</h1>
+      </Col>
+      <Col className="page-name-container">
+      <h1>User</h1>
+      </Col>
+    </Row>
+         {/* TODO: send via props the lienense plate number to the exit gate screen */}
 
         <Container fluid style={{ marginTop: "100px", display: "flex", flexDirection: "column", justifyContent: "center", textAlign: "center" }}>
             <Row>
@@ -175,6 +184,7 @@ const ExitGateScreen = (): JSX.Element => {
                 </Col>
             </Row>
         </Container>
+        </>
 
     );
 };

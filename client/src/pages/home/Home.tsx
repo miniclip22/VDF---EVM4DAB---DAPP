@@ -3,6 +3,7 @@ import React from "react";
 import "./homeStyles.css";
 import { NavigateFunction, useNavigate } from "react-router-dom";
 
+
 function Home(): JSX.Element {
   const navigate: NavigateFunction = useNavigate();
 
@@ -12,6 +13,15 @@ function Home(): JSX.Element {
   };
 
   return (
+    <>
+    <Row>
+      <Col className="page-name-container">
+        <h1>System</h1>
+      </Col>
+      <Col className="page-name-container">
+      <h1>User</h1>
+      </Col>
+    </Row>
     <div className={"home-container"}>
       <Container fluid>
         <Row>
@@ -39,6 +49,7 @@ function Home(): JSX.Element {
         </Row>
       </Container>
     </div>
+    </>
   );
 }
 

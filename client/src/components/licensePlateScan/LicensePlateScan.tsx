@@ -4,16 +4,18 @@ import "./LicensePlateScanStyles.css";
 import DocumentScannerIcon from "@mui/icons-material/DocumentScanner";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import { NavigateFunction, useNavigate } from "react-router-dom";
+import { log } from "console";
 
 interface LicensePlateProps {
   licensePlateButtonScanSuccessText: string;
   licensePlateButtonScanSucessRoute: string;
+  licensePlateButtonRescanText: string;
   getExitGatelicensePlate?: (data: string) => void;
 
 
 }
 
-function LicensePlateScan({ licensePlateButtonScanSuccessText, licensePlateButtonScanSucessRoute, getExitGatelicensePlate }: LicensePlateProps): JSX.Element {
+function LicensePlateScan({ licensePlateButtonScanSuccessText, licensePlateButtonScanSucessRoute, licensePlateButtonRescanText, getExitGatelicensePlate }: LicensePlateProps): JSX.Element {
   const navigate: NavigateFunction = useNavigate();
   // useState hook to store the licence plate number
   const [licensePlate, setLicensePlate] = useState<string>("61A495J");
@@ -35,8 +37,19 @@ function LicensePlateScan({ licensePlateButtonScanSuccessText, licensePlateButto
     });
   };
 
+  
+
 
   return (
+    <>
+    <Row>
+      <Col className="page-name-container">
+        <h1>System</h1>
+      </Col>
+      <Col className="page-name-container">
+      <h1>User</h1>
+      </Col>
+    </Row>
     <div className={"license-plate-scan-container"}>
       <Container fluid>
         <Row>
@@ -57,7 +70,16 @@ function LicensePlateScan({ licensePlateButtonScanSuccessText, licensePlateButto
                       onClick={handleRescanLicensePlace}
                     />
                     <Row>
-                      <Col>Rescan</Col>
+                      <Col>
+                      <br />
+                        <Button
+                          variant="primary"
+                          size="lg"
+                          onClick={handleRescanLicensePlace}
+                        >
+                          {licensePlateButtonRescanText}
+                        </Button>
+                      </Col>
                     </Row>
                   </Col>
                   <Col>
@@ -86,6 +108,7 @@ function LicensePlateScan({ licensePlateButtonScanSuccessText, licensePlateButto
         </Row>
       </Container>
     </div>
+    </>
   );
 }
 

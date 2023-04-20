@@ -27,7 +27,8 @@ const ProcessPaymentScreen = (): JSX.Element => {
     const [paymentBeingProcessed, setPaymentBeingProcessed] = useState<boolean>(false);
     const [paymentProcessed, setPaymentProcessed] = useState<boolean>(false);
 
-
+    const [localLicensePlate, setLocalLicensePlate] = useState<string>(licensePlate);
+ 
 
     useEffect(() => {
         const timeout1 = setTimeout(() => {
@@ -52,12 +53,12 @@ const ProcessPaymentScreen = (): JSX.Element => {
         setTimeout(() => {
             setPaymentProcessed(true);
             navigate("/open-exit-gate", {
-            state: {
-                licensePlate: licensePlate,
-            }
-        });
+                state: {
+                    licensePlate: licensePlate,
+                }
+            });
         }, 5000);
-        
+
     };
 
 
@@ -65,23 +66,23 @@ const ProcessPaymentScreen = (): JSX.Element => {
         if (timeElapsedinMinutes === 0) {
             return (
                 <Container fluid style={{ marginTop: "100px", display: "flex", flexDirection: "column", justifyContent: "center", textAlign: "center" }}>
-                <Row className="rowStyle">
-                    <Col xs={6}>
-                        <h3>Calculating time elapsed. Please wait.   <Spinner animation="border" variant="primary" /></h3>
-                        
-                    </Col>
-                   
-                </Row>
+                    <Row className="rowStyle">
+                        <Col xs={6}>
+                            <h3>Calculating time elapsed. Please wait.   <Spinner animation="border" variant="primary" /></h3>
+
+                        </Col>
+
+                    </Row>
                 </Container>
             );
         } else {
             return (
                 <Container fluid style={{ marginTop: "100px", display: "flex", flexDirection: "column", justifyContent: "center", textAlign: "center" }}>
-                <Row>
-                    <Col>
-                       <h3> Time elapsed: {timeElapsedinMinutes} minutes. <br /> </h3>
-                    </Col>
-                </Row>
+                    <Row>
+                        <Col>
+                            <h3> Time elapsed: {timeElapsedinMinutes} minutes. <br /> </h3>
+                        </Col>
+                    </Row>
                 </Container>
             );
         }
@@ -91,23 +92,23 @@ const ProcessPaymentScreen = (): JSX.Element => {
         if (totalPayment === 0) {
             return (
                 <Container fluid style={{ marginTop: "100px", display: "flex", flexDirection: "column", justifyContent: "center", textAlign: "center" }}>
-                <Row className="rowStyle">
-                    <Col xs={6}>
-                       <h3>Calculating total payment. Please wait.   <Spinner animation="border" variant="primary" /></h3> 
-                    </Col>
-                    
-                </Row>
+                    <Row className="rowStyle">
+                        <Col xs={6}>
+                            <h3>Calculating total payment. Please wait.   <Spinner animation="border" variant="primary" /></h3>
+                        </Col>
+
+                    </Row>
                 </Container>
 
             );
         } else {
             return (
                 <Container fluid style={{ marginTop: "100px", display: "flex", flexDirection: "column", justifyContent: "center", textAlign: "center" }}>
-                <Row>
-                  
-                       <h3> Total Payment: {totalPayment} Euro. <br /> </h3>
-                   
-                </Row>
+                    <Row>
+
+                        <h3> Total Payment: {totalPayment} Euro. <br /> </h3>
+
+                    </Row>
                 </Container>
             );
         }
@@ -117,126 +118,166 @@ const ProcessPaymentScreen = (): JSX.Element => {
         if (paymentBeingProcessed) {
             return (
                 <>
-                <Container fluid style={{ marginTop: "100px", display: "flex", flexDirection: "column", justifyContent: "center", textAlign: "center" }}> 
-                    <Row>
-                        <Col>
-                            <h2>Payment autorized and being processed...</h2>
-                        </Col>
+                    <Container fluid className="payment-confirmation-container">
+                        <Row>
+                            <Col id="payment-confirmation-text2" className="payment-confirmation-text">
+                            <div>
+                                <h2>Payment autorized and being processed...</h2> 
+                            </div>
+                            <div className="payment-confirmation-spinner">
+                                <Spinner animation="border" variant="primary" />
+                            </div>
+                            </Col>
 
-                        <Col>
 
-                        </Col>
-                    </Row>
+                            <Col>
 
-                    <Row>
-                        <Col>
-                            <Spinner animation="border" variant="primary" />
-                        </Col>
+                            </Col>
+                        </Row>
 
-                        <Col>
-                        
-                        </Col>
-                    </Row>
+                        <Row>
+                            <Col>
+                                
+                            </Col>
 
-                    <br />
+                            <Col>
 
-                    <Row>
-                        <Col>
-                            <h2>Calling DAB for payment confirmation and waiting for release.</h2>
-                        </Col>
+                            </Col>
+                        </Row>
 
-                        <Col>
-                        
-                        </Col>
-                    </Row>
+                        <br />
+
+                        <Row>
+                            <Col>
+                                <h2>Calling DAB for payment confirmation and waiting for release.</h2>
+                            </Col>
+
+                            <Col>
+
+                            </Col>
+                        </Row>
                     </Container>
-                    </>
-                    );
+                </>
+            );
         }
-                    else {
+        else {
             return null;
         }
     }
+
+    
+
+    const handleRescanLicensePlace = (): void => {
+        setLocalLicensePlate("61A49YX");
+      };
+
     
 
 
 
 
-    const renderPaymentIcons = () => {
+
+    const renderPaymentIcons = () => {       
+        let paymentElement = <>  </>
+
+        if (!paymentBeingProcessed && totalPayment > 0 && timeElapsedinMinutes > 0) {
+            paymentElement = <Col className="btns">
+            <VerifiedIcon sx={{ fontSize: "50px" }} />
+            <Row>
+                <Col >
+                    <br />
+                    <Button
+                        variant="primary"
+                        size="lg"
+                        onClick={handlePaymentConfirmation}
+                        disabled={paymentBeingProcessed}
+                    >
+                        Pay
+                    </Button>
+                </Col>
+            </Row>
+        </Col>
+        } else if (paymentBeingProcessed){
+            paymentElement = <Col className="btns">
+            <VerifiedIcon sx={{ fontSize: "50px" }} />
+            <Row>
+                <Col >
+                    <br />
+                    <Button
+                        variant="primary"
+                        size="lg"
+                        onClick={handlePaymentConfirmation}
+                        disabled={paymentBeingProcessed}
+                    >
+                        Payment received and being processed. Please wait...
+                    </Button>
+                </Col>
+            </Row>
+        </Col>
+            
+        }
+
         return (<Col>
-                        <Row>
-                            <Col className={""}>
-                                <Row className="btnsRow">
-                                    {paymentBeingProcessed === false ? (
-                                        <Col className="btns">
-                                            <DocumentScannerIcon sx={{ fontSize: '50px' }} />
-                                            <Row>
-                                                <Col>
-                                                <h6>Rescan</h6>
-                                                </Col>
-                                            </Row>
-                                        </Col>
-                                    ) : null}
-                                    <Col className="btns">
-                                        <VerifiedIcon sx={{ fontSize: "50px" }} />
-                                        <Row>
-                                            <Col>
-                                               
-                                                <Button
-                                                    variant="primary"
-                                                    size="lg"
-                                                    onClick={handlePaymentConfirmation}
-                                                    disabled={paymentBeingProcessed}
-                                                >
-                                                    {paymentBeingProcessed ? (
-                                                        "Payment received and being processed. Please wait..."
-                                                    ) : (
-                                                        "Pay"
-                                                    )}
-                                                </Button>
-                                            </Col>
-                                        </Row>
+            <Row>
+                <Col className={"payment-Buttons-Container"}>
+                    <Row className="btnsRow">
+                        {!paymentBeingProcessed  && totalPayment > 0 && timeElapsedinMinutes > 0 ? (
+                            <Col className="btns">
+                                <DocumentScannerIcon sx={{ fontSize: '50px' }} />
+                                <Row>
+                                    <Col>
+                                        <br />
+                                        <Button
+                                            variant="primary"
+                                            size="lg"
+                                            onClick={handleRescanLicensePlace}
+                                        >
+                                            {"Rescan"}
+                                        </Button>
                                     </Col>
                                 </Row>
                             </Col>
-                        </Row>
-                    </Col>);
+                        ) : null}
+                        {paymentElement}
+                </Col>
+            </Row>
+        </Col>);
     }
 
     const renderUserTimeInformation = (): JSX.Element => {
         if (timeElapsedinMinutes > 0) {
             return (<Col>
-                        <Row>
-                    
-                                
-                               <h3> License Plate: {licensePlate}, <br /> Entry time: 12:00, <br /> Exit time: 12:50 </h3>
-                            
-                        </Row>
-                    </Col>);
+                <Row>
+
+
+                    <h3 className="center"> License Plate: {localLicensePlate}, <br /> Entry time: 12:00, <br /> Exit time: 12:50 </h3>
+
+                </Row>
+            </Col>);
         }
-                    else {
+        else {
             return (<Col>
-                    </Col>);
+            </Col>);
         }
     }
 
     const renderUserPaymentMessageAndConfirmation = (): JSX.Element => {
         if (totalPayment === 0) {
             return (<Col>
-                    </Col>);
+            </Col>);
         } else if (totalPayment > 0 && timeElapsedinMinutes > 0) {
             return (<Col>
-                        <Row>
-                            <Col>
-                            <h1>  Your session will cost {totalPayment} Euro. <br /> </h1>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col>
-                            <h3>   Do you agree? </h3>
-                            </Col>
-                        </Row>
-                    </Col>);
+                <Row>
+                    <Col>
+                        <h1 className="center">  Your session will cost {totalPayment} Euro. <br /> </h1>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <h3 className="center">   Do you agree? </h3>
+                    </Col>
+                </Row>
+            </Col>);
         }
 
 
@@ -244,30 +285,40 @@ const ProcessPaymentScreen = (): JSX.Element => {
 
 
 
-                    return (
-                    <Container fluid>
-                        <Row>
-                            <Col>
-                                {renderSystemTimeInformation()}
-                            </Col>
-                            {renderUserTimeInformation()}
-                        </Row>
-                        <Row>
-                            <Col>
-                                {renderSystemPaymentInformation()}
-                            </Col>
-                            {renderUserPaymentMessageAndConfirmation()}
-                        </Row>
-                        <Row>
-                            <Col>
-                            </Col>
-                            {renderPaymentIcons()}
-                        </Row>
-                        {renderPaymentConfirmation()}
-                    </Container>
-                    );
+    return (
+        <>
+    <Row>
+      <Col className="page-name-container">
+        <h1>System</h1>
+      </Col>
+      <Col className="page-name-container">
+      <h1>User</h1>
+      </Col>
+    </Row>
+        <Container fluid>
+            <Row>
+                <Col>
+                    {renderSystemTimeInformation()}
+                </Col>
+                {renderUserTimeInformation()}
+            </Row>
+            <Row>
+                <Col>
+                    {renderSystemPaymentInformation()}
+                </Col>
+                {renderUserPaymentMessageAndConfirmation()}
+            </Row>
+            <Row>
+                <Col>
+                </Col>
+                {renderPaymentIcons()}
+            </Row>
+            {renderPaymentConfirmation()}
+        </Container>
+        </>
+    );
 };
 
-                    export default ProcessPaymentScreen;
+export default ProcessPaymentScreen;
 
 

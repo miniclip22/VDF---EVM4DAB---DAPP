@@ -26,6 +26,15 @@ function OpenGateScreen(): JSX.Element {
 
 
   return (
+    <>
+    <Row>
+      <Col className="page-name-container">
+        <h1>System</h1>
+      </Col>
+      <Col className="page-name-container">
+      <h1>User</h1>
+      </Col>
+    </Row>
     <div className={"open-gate-container"}>
       <Container fluid>
         <Row>
@@ -83,6 +92,7 @@ function OpenGateScreen(): JSX.Element {
         <br />
       </Container>
     </div>
+    </>
   );
 }
 
