@@ -1,0 +1,19 @@
+.home-container {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.parking-intro-row {
+    display: flex;
+    flex-direction: column;
+}
+
+.left-border {
+    border-left: 1px solid black;
+    height: 600px;
+  }
+  

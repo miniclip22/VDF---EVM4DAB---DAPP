@@ -9,6 +9,7 @@ module.exports = {
   entry: "./src/index.tsx",
   output: {
     path: path.resolve(__dirname, "build"),
+    publicPath: "/",
   },
   resolve: { extensions },
   devtool: "source-map",
@@ -16,6 +17,7 @@ module.exports = {
     client: {
       overlay: false,
     },
+    historyApiFallback: true,
   },
   module: {
     rules: [
@@ -28,7 +30,7 @@ module.exports = {
       // `ts` and `tsx` files are parsed using `ts-loader`
       {
         test: /\.(ts|tsx)$/,
-        loader: "ts-loader"
+        loader: "ts-loader",
       },
       {
         test: /\.css$/i,
