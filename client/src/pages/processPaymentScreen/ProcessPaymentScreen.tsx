@@ -28,7 +28,7 @@ const ProcessPaymentScreen = (): JSX.Element => {
     const [paymentProcessed, setPaymentProcessed] = useState<boolean>(false);
 
     const [localLicensePlate, setLocalLicensePlate] = useState<string>(licensePlate);
- 
+
 
     useEffect(() => {
         const timeout1 = setTimeout(() => {
@@ -122,7 +122,7 @@ const ProcessPaymentScreen = (): JSX.Element => {
                         <Row>
                             <Col id="payment-confirmation-text2" className="payment-confirmation-text">
                             <div>
-                                <h2>Payment autorized and being processed...</h2> 
+                                <h2>Payment autorized and being processed...</h2>
                             </div>
                             <div className="payment-confirmation-spinner">
                                 <Spinner animation="border" variant="primary" />
@@ -137,7 +137,7 @@ const ProcessPaymentScreen = (): JSX.Element => {
 
                         <Row>
                             <Col>
-                                
+
                             </Col>
 
                             <Col>
@@ -165,19 +165,19 @@ const ProcessPaymentScreen = (): JSX.Element => {
         }
     }
 
-    
+
 
     const handleRescanLicensePlace = (): void => {
         setLocalLicensePlate("61A49YX");
       };
 
-    
 
 
 
 
 
-    const renderPaymentIcons = () => {       
+
+    const renderPaymentIcons = () => {
         let paymentElement = <>  </>
 
         if (!paymentBeingProcessed && totalPayment > 0 && timeElapsedinMinutes > 0) {
@@ -214,14 +214,14 @@ const ProcessPaymentScreen = (): JSX.Element => {
                 </Col>
             </Row>
         </Col>
-            
+
         }
 
         return (<Col>
             <Row>
-                <Col className={"payment-Buttons-Container"}>
+                <Col className="payment-Buttons-Container">
                     <Row className="btnsRow">
-                        {!paymentBeingProcessed  && totalPayment > 0 && timeElapsedinMinutes > 0 ? (
+                        {!paymentBeingProcessed && totalPayment > 0 && timeElapsedinMinutes > 0 ? (
                             <Col className="btns">
                                 <DocumentScannerIcon sx={{ fontSize: '50px' }} />
                                 <Row>
@@ -232,13 +232,14 @@ const ProcessPaymentScreen = (): JSX.Element => {
                                             size="lg"
                                             onClick={handleRescanLicensePlace}
                                         >
-                                            {"Rescan"}
+                                            Rescan
                                         </Button>
                                     </Col>
                                 </Row>
                             </Col>
                         ) : null}
                         {paymentElement}
+                    </Row>
                 </Col>
             </Row>
         </Col>);
