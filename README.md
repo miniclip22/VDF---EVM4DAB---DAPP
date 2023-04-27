@@ -35,7 +35,7 @@ smart contracts.
 
 - [Node.js](https://nodejs.org/en/) (v18.1.5 or higher)
 - [Metamask](https://metamask.io/)
-- A .env file in the root of the project with the following keys:
+- A .env file in the **truffle** with the following keys:
     - **PRIVATE_KEYS**: an array of private Ethereum account keys that will be used to sign transactions when deploying
       and/or testing
     - **TRUFFLE_PROVIDER_URL**: the URL of the EVM chain to be used. Can be Ethereum mainnet, testnet, etc. By default,
@@ -46,7 +46,7 @@ Note: The private keys provided should be from accounts that have been already f
 default, the DApp assumes the accounts supplied here are connecting to the Vodafone NodeReal EVM-Compatible chain and
 are properly funded (https://vodafone-testnet-faucet.nodereal.io/).
 
-Example of the .env file can be found in the file **.env.example** in the root of the project.
+Example of the .env file can be found in the file **.env.example** in the **truffle** folder.
 
 ### Install Dependencies
 
@@ -99,7 +99,7 @@ To configure the Cycloid/Vodafone Parking Scenario DApp for use with a new EVM-c
 1. **JSON-RPC endpoint**: Ensure that the new EVM-compatible chain you want to use is accessible via a JSON-RPC
    endpoint. A JSON-RPC endpoint is an interface that allows you to interact with the blockchain using the JSON-RPC
    protocol, usually over HTTP or WebSocket connections.
-2. **Update the `.env` file**: Edit the `.env` file located in the root of the project to replace the
+2. **Update the `.env` file**: Edit the `.env` file located in the **truffle** folder to replace the
    existing `TRUFFLE_PROVIDER_URL` value with the new chain's JSON-RPC endpoint URL.
 
    ```node
