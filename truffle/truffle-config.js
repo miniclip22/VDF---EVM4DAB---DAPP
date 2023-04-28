@@ -48,6 +48,10 @@ require("dotenv").config();
 // const { MNEMONIC, PROJECT_ID } = process.env;
 
 // const HDWalletProvider = require('@truffle/hdwallet-provider');
+
+if(process.env.PRIVATE_KEYS === undefined) {
+  throw new Error("Private keys are not set. Please set them in the .env file as defined in the .env.example file");
+}
 const privateKeys = process.env.PRIVATE_KEYS.split(",");
 
 module.exports = {
