@@ -62,6 +62,22 @@ npm install -g truffle ganache
 
 ## Commands
 
+Some commands below require a network suffix to work properly. These are marked with <network_id> that is defined in the file **truffle-config.js** at the **truffle** folder. In this project, the two possible values are: vodafone and ganache.
+
+Example:
+
+```bash
+truffle migrate --network ganache
+```
+
+or
+
+```bash 
+truffle migrate --network vodafone
+```
+
+**Note**: if running with the ganache network, the default port as defined in **trufle-config.js** is 7545 and should have **network_id** of 1337
+
 ### Compile Solidity Smart Contracts
 
 ```bash
@@ -71,13 +87,13 @@ cd truffle && truffle compile
 ### Test Solidity Smart Contracts
 
 ```bash
-cd truffle && truffle test
+cd truffle && truffle test --network <network_id>
 ```
 
 ### Migrate Solidity Smart Contracts
 
 ```bash
-cd truffle && truffle migrate
+cd truffle && truffle migrate --network <network_id>
 ```
 
 ### Run Dev Server
