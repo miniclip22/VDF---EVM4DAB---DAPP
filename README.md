@@ -42,9 +42,7 @@ smart contracts.
       it
       should be "https://vodafone-testnet.nodereal.io"
 
-Note: The private keys provided should be from accounts that have been already funded on the chain of choice. By
-default, the DApp assumes the accounts supplied here are connecting to the Vodafone NodeReal EVM-Compatible chain and
-are properly funded (https://vodafone-testnet-faucet.nodereal.io/).
+**Note**: The private keys provided should be from accounts that have been already funded on the chain of choice.
 
 Example of the .env file can be found in the file **.env.example** in the **truffle** folder.
 
@@ -76,7 +74,7 @@ or
 truffle migrate --network vodafone
 ```
 
-**Note**: if running with the ganache network, the default port as defined in **trufle-config.js** is 7545 and should have **network_id** of 1337
+**Note**: if running with the ganache network, the default port as defined in **trufle-config.js** is 7545 and should have the **network_id** of 1337.
 
 ### Compile Solidity Smart Contracts
 
@@ -124,14 +122,16 @@ To configure the Cycloid/Vodafone Parking Scenario DApp for use with a new EVM-c
 
    Replace `<new_chain_json_rpc_endpoint>` with the actual URL for the new EVM-compatible chain.
 
+Example for Ganache: 
+
+```bash
+TRUFFLE_PROVIDER_URL=http://localhost:7545
+```
+
 Example for Vodafone:
 
 ```bash
-
-    ```
-
-Example for Ganache:
-```bash
+TRUFFLE_PROVIDER_URL=https://vodafone-testnet.nodereal.io 
 ```
 
 Note: see the file **.env.example** for an example on how to edit the .env file.
