@@ -2,6 +2,7 @@ const HelloWorldContract = artifacts.require("HelloWorld");
 const assert = require("assert");
 require("dotenv").config();
 const Web3 = require("web3");
+// If using Ganache, should be set to "http://localhost:7545"
 const web3 = new Web3(
     new Web3.providers.HttpProvider(process.env.TRUFFLE_PROVIDER_URL)
 );

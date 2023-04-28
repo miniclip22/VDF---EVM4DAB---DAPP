@@ -1,14 +1,14 @@
-import React, { useReducer, useCallback, useEffect } from "react";
+import React, {useCallback, useEffect, useReducer} from "react";
 import Web3 from "web3";
 import EthContext from "./EthContext";
-import { reducer, actions, initialState } from "./state";
+import {actions, initialState, reducer} from "./state";
 
 function EthProvider({ children }: any) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const init = useCallback(async (artifact: any) => {
     if (artifact) {
-      const web3 = new Web3(Web3.givenProvider || "ws://localhost:8545");
+      const web3 = new Web3(Web3.givenProvider || "ws://localhost:7545");
       const accounts = await web3.eth.requestAccounts();
       const networkID = await web3.eth.net.getId();
       const { abi } = artifact;

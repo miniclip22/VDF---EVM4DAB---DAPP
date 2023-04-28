@@ -124,7 +124,18 @@ To configure the Cycloid/Vodafone Parking Scenario DApp for use with a new EVM-c
 
    Replace `<new_chain_json_rpc_endpoint>` with the actual URL for the new EVM-compatible chain.
 
-   Note: see the file **.env.example** for an example on how to edit the .env file.
+Example for Vodafone:
+
+```bash
+
+    ```
+
+Example for Ganache:
+```bash
+```
+
+Note: see the file **.env.example** for an example on how to edit the .env file.
+
 3. **Funded accounts**: Make sure that the private keys provided in the `.env` file belong to accounts that have been
    funded with the native cryptocurrency of the new chain.
 4. **Update the faucet URL**: If the new EVM-compatible chain has a faucet for obtaining test funds, update the

@@ -5,10 +5,11 @@ const web3 = new Web3(
 );
 web3.eth.setProvider(Web3.givenProvider);
 
-contract("Transfer Ether", function () {
+contract("Transfer Ether", function (accounts) {
+
     // Scenario 2
-    const cordaSender = "0x4858d3E1ae140F3897657922D72c3C35e800Ed60";
-    const cordaReceiver = "0xC7FdA6c07C6ff2A093d11bf71C95CDca7b139680";
+    const cordaSender = accounts[0];
+    const cordaReceiver = accounts[1];
     // Amount in Ether
     const cordaAmount = 2;
 
