@@ -81,13 +81,24 @@ module.exports = {
     vodafone: {
       provider: function () {
         return new HDWalletProvider(
-          privateKeys,
-          process.env.TRUFFLE_PROVIDER_URL
+            privateKeys,
+            process.env.TRUFFLE_PROVIDER_URL
         );
       },
       // accounts: ["0x4858d3E1ae140F3897657922D72c3C35e800Ed60"],
       network_id: "923020",
       from: "0x4858d3E1ae140F3897657922D72c3C35e800Ed60",
+    },
+    sepolia: {
+      provider: function () {
+        return new HDWalletProvider(
+            privateKeys,
+            process.env.TRUFFLE_PROVIDER_URL + process.env.INFURA_API_KEY
+        );
+      },
+      // accounts: ["0x4858d3E1ae140F3897657922D72c3C35e800Ed60"],
+      network_id: "11155111",
+      from: "0x5Fc1c605cc36431722674Ec15eBA443Cdd4d488e",
     },
     //
     // An additional network, but with some advanced options…
