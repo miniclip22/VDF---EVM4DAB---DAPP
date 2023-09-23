@@ -106,49 +106,6 @@ cd client && npm run start
 cd client && npm run build
 ```
 
-## Configure New EVM-Compatible Chains
-
-To configure the Cycloid/Vodafone Parking Scenario DApp for use with a new EVM-compatible chain, follow these steps:
-
-1. **JSON-RPC endpoint**: Ensure that the new EVM-compatible chain you want to use is accessible via a JSON-RPC
-   endpoint. A JSON-RPC endpoint is an interface that allows you to interact with the blockchain using the JSON-RPC
-   protocol, usually over HTTP or WebSocket connections.
-2. **Update the `.env` file**: Edit the `.env` file located in the **truffle** folder to replace the
-   existing `TRUFFLE_PROVIDER_URL` value with the new chain's JSON-RPC endpoint URL.
-
-   ```node
-   TRUFFLE_PROVIDER_URL=<new_chain_json_rpc_endpoint>
-   ```
-
-   Replace `<new_chain_json_rpc_endpoint>` with the actual URL for the new EVM-compatible chain.
-
-Example for Ganache: 
-
-```bash
-TRUFFLE_PROVIDER_URL=http://localhost:7545
-```
-
-Example for Vodafone:
-
-```bash
-TRUFFLE_PROVIDER_URL=https://vodafone-testnet.nodereal.io 
-```
-
-Note: see the file **.env.example** for an example on how to edit the .env file.
-
-3. **Funded accounts**: Make sure that the private keys provided in the `.env` file belong to accounts that have been
-   funded with the native cryptocurrency of the new chain.
-4. **Update the faucet URL**: If the new EVM-compatible chain has a faucet for obtaining test funds, update the
-   README.md file with the new faucet URL.
-5. **Adjust chain-specific configurations**: The new EVM-compatible chain may have different requirements or
-   characteristics, such as gas prices and gas limits. You might need to update the `truffle-config.js` file in
-   the `truffle` folder with these new settings. Consult the documentation for the new EVM-compatible chain to determine
-   the appropriate configurations.
-6. **Test the DApp**: After making the necessary changes, follow the instructions in the README.md file to compile,
-   test, and migrate the smart contracts, as well as run the development server or build for production. Thoroughly test
-   the DApp with the new EVM-compatible chain to ensure that it works correctly, as different chains may have slightly
-   different behaviors or requirements.
-
 ## Troubleshooting
 
 If you encounter issues during installation, configuration, or usage, try the following steps:
