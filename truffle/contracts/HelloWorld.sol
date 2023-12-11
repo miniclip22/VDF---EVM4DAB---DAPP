@@ -1,14 +1,13 @@
-pragma solidity ^0.8.18;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.23;
 
 contract HelloWorld {
-    string public message;
+    // Event declaration
+    event MessageEvent(string message);
 
-    constructor() {
-        message = "Hello World";
-    }
-
-
-    function sayHelloWorld() public view returns (string memory) {
+    // Function to emit the event with the provided message and return the message
+    function emitMessage(string calldata message) external returns (string memory) {
+        emit MessageEvent(message);
         return message;
     }
 }

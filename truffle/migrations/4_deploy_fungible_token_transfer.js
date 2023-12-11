@@ -13,3 +13,4 @@ module.exports = async function (deployer, network, accounts) {
     // ! Uncomment this when the DMOPriceOracle and DemoToken contracts have been deployed
     // await deployer.deploy(FungibleTokenTransfer, oracleAddress, tokenAddress);
 };
+

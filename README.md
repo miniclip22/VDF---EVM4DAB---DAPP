@@ -10,15 +10,7 @@ management system using Ethereum-based smart contracts.
     - [Prerequisites](#prerequisites)
     - [Install Dependencies](#install-dependencies)
     - [Install Ganache and Truffle](#install-ganache-and-truffle)
-- [Commands](#commands)
-    - [Compile Solidity Smart Contracts](#compile-solidity-smart-contracts)
-    - [Test Solidity Smart Contracts](#test-solidity-smart-contracts)
-    - [Migrate Solidity Smart Contracts](#migrate-solidity-smart-contracts)
-    - [Run Dev Server](#run-dev-server)
-    - [Build for Production](#build-for-production)
-- [Configure New EVM-Compatible Chains](#configure-new-evm-compatible-chains)
-- [Troubleshooting](#troubleshooting)
-- [Contributing](#contributing)
+      [Contributing](#contributing)
 - [License](#license)
 - [Contact Information](#contact-information)
 
@@ -75,50 +67,6 @@ truffle migrate --network vodafone
 ```
 
 **Note**: if running with the ganache network, the default port as defined in **trufle-config.js** is 7545 and should have the **network_id** of 1337.
-
-### Compile Solidity Smart Contracts
-
-```bash
-cd truffle && truffle compile
-```
-
-### Test Solidity Smart Contracts
-
-```bash
-cd truffle && truffle test --network <network_id>
-```
-
-### Migrate Solidity Smart Contracts
-
-```bash
-cd truffle && truffle migrate --network <network_id>
-```
-
-### Run Dev Server
-
-```bash
-cd client && npm run start
-```
-
-### Build for Production
-
-```bash
-cd client && npm run build
-```
-
-## Troubleshooting
-
-If you encounter issues during installation, configuration, or usage, try the following steps:
-
-1. Double-check the `.env` file for any errors or missing information.
-2. Ensure that your Node.js version is compatible (v18.1.5 or higher).
-3. Verify that your private keys are valid and associated with funded accounts on the chosen EVM-compatible chain.
-4. Confirm that the `truffle-config.js` file contains the correct settings for the chosen EVM-compatible chain, such as
-   gas prices and gas limits.
-5. Check the official documentation for Ganache, Truffle, or the EVM-compatible chain for additional troubleshooting
-   tips.
-6. If you are still experiencing issues, consider searching for similar issues on the project's GitHub Issues page or
-   creating a new issue with a detailed description of the problem.
 
 ## Contributing
 

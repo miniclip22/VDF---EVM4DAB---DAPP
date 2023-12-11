@@ -5,3 +5,4 @@ const DMOPriceOracle = artifacts.require("DMOPriceOracle");
 module.exports = function (deployer) {
     deployer.deploy(DMOPriceOracle);
 };
+

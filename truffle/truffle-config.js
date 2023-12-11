@@ -92,13 +92,16 @@ module.exports = {
     sepolia: {
       provider: function () {
         return new HDWalletProvider(
-            privateKeys,
+            privateKeys[1],
             process.env.TRUFFLE_PROVIDER_URL + process.env.INFURA_API_KEY
         );
+
       },
       // accounts: ["0x4858d3E1ae140F3897657922D72c3C35e800Ed60"],
       network_id: "11155111",
-      from: "0x5Fc1c605cc36431722674Ec15eBA443Cdd4d488e",
+      from: "0xd36D0E01E468c982DA177A2E9f714935702213Aa",
+      // gas: 4465030,
+      networkCheckTimeout: 5000000,
     },
     //
     // An additional network, but with some advanced options…
@@ -137,17 +140,18 @@ module.exports = {
   // Configure your compilers
   compilers: {
     solc: {
-      version: "0.8.18", // Fetch exact version from solc-bin (default: truffle's version)
+      version: "0.8.23", // Fetch exact version from solc-bin (default: truffle's version)
       // docker: true,        // Use "0.5.1" you've installed locally with docker (default: false)
-      // settings: {          // See the solidity docs for advice about optimization and evmVersion
-      //  optimizer: {
-      //    enabled: false,
-      //    runs: 200
-      //  },
-      //  evmVersion: "byzantium"
-      // }
+      settings: {          // See the solidity docs for advice about optimization and evmVersion
+        optimizer: {
+          enabled: true,
+          runs: 200
+        },
+        // evmVersion: "byzantium"
+      }
     },
   },
+
 
   // Truffle DB is currently disabled by default; to enable it, change enabled:
   // false to enabled: true. The default storage location can also be

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.23;
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
@@ -148,7 +148,7 @@ contract Parking {
             "Incorrect car_organisation_id."
         );
         parkingSessions[licence_plate].tx_ids[
-            parkingSessions[licence_plate].tx_ids_count++
+        parkingSessions[licence_plate].tx_ids_count++
         ] = tx_id;
         parkingSessions[licence_plate].endTime = endTime;
         parkingSessions[licence_plate].status = SessionStatus.PAYMENT_PENDING;
@@ -208,7 +208,7 @@ contract Parking {
 
         require(
             parkingSessions[licence_plate].status ==
-                SessionStatus.PAYMENT_PENDING,
+            SessionStatus.PAYMENT_PENDING,
             "Parking session not ended."
         );
 
