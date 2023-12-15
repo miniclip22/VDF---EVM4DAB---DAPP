@@ -54,6 +54,8 @@ if(process.env.PRIVATE_KEYS === undefined) {
 }
 const privateKeys = process.env.PRIVATE_KEYS.split(",");
 
+const alchemySepoliaUrl = process.env.ALCHEMY_SEPOLIA_URL + process.env.ALCHEMY_API_KEY;
+
 module.exports = {
   /**
    * Networks define how you connect to your ethereum client and let you set the
@@ -103,6 +105,15 @@ module.exports = {
       // gas: 4465030,
       networkCheckTimeout: 5000000,
     },
+    alchemySepolia: {
+      provider: () => new HDWalletProvider(privateKeys[1], alchemySepoliaUrl),
+      network_id: '11155111', // Sepolia's network ID
+      gas: 5500000,           // Optional: Gas limit used for deploys
+      confirmations: 2,       // Optional: Number of confirmations to wait between deployments
+      timeoutBlocks: 200,     // Optional: Number of blocks before a deployment times out
+      skipDryRun: true,     // Optional: Skip dry run before migrations
+      from: "0xd36D0E01E468c982DA177A2E9f714935702213Aa",
+    },
     //
     // An additional network, but with some advanced options…
     // advanced: {
@@ -140,7 +151,7 @@ module.exports = {
   // Configure your compilers
   compilers: {
     solc: {
-      version: "0.8.23", // Fetch exact version from solc-bin (default: truffle's version)
+      version: "0.8.19", // Fetch exact version from solc-bin (default: truffle's version)
       // docker: true,        // Use "0.5.1" you've installed locally with docker (default: false)
       settings: {          // See the solidity docs for advice about optimization and evmVersion
         optimizer: {
