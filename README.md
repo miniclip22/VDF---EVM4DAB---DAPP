@@ -14,6 +14,7 @@ parking management system, utilizing Ethereum-based smart contracts.
     - [Compile Solidity Smart Contracts](#compile-solidity-smart-contracts)
     - [Test Solidity Smart Contracts](#test-solidity-smart-contracts)
     - [Migrate Solidity Smart Contracts](#migrate-solidity-smart-contracts)
+  - [Deployment](#deployment)
     - [Run Dev Server](#run-dev-server)
     - [Build for Production](#build-for-production)
 - [Configure New EVM-Compatible Chains](#configure-new-evm-compatible-chains)
@@ -95,6 +96,33 @@ cd truffle && truffle test --network <network_id>
 ```
 
 ### Migrate Solidity Smart Contracts
+
+### Deployment
+
+Deployment of the smart contracts to a blockchain is a crucial step in making the DApp functional. The deployment
+process varies slightly based on the target network.
+
+#### Deploying to Test Networks (e.g., Ganache, Sepolia)
+
+```bash
+cd truffle && truffle migrate --network <test_network_id>
+```
+
+This command deploys the smart contracts to the specified test network. Replace <test_network_id> with the identifier of
+your test network (e.g., ganache, sepolia).
+
+#### Deploying to Ethereum Mainnet
+
+cd truffle && truffle migrate --network mainnet
+
+Use this command to deploy the smart contracts to the Ethereum Mainnet. This step requires a significant amount of Ether
+for gas fees and should only be done when the contracts are fully tested and ready for production.
+
+Important: Ensure that your .env file contains the correct private keys and provider URLs before initiating the
+deployment process.
+
+After successful deployment, the DApp will interact with the smart contracts on the blockchain, allowing users to
+utilize its features in a decentralized environment.
 
 ```bash
 cd truffle && truffle migrate --network <network_id>
