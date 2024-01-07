@@ -113,7 +113,9 @@ your test network (e.g., ganache, sepolia).
 
 #### Deploying to Ethereum Mainnet
 
+```bash
 cd truffle && truffle migrate --network mainnet
+```
 
 Use this command to deploy the smart contracts to the Ethereum Mainnet. This step requires a significant amount of Ether
 for gas fees and should only be done when the contracts are fully tested and ready for production.
