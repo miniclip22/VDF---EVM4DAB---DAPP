@@ -54,6 +54,13 @@ if(process.env.PRIVATE_KEYS === undefined) {
 }
 const privateKeys = process.env.PRIVATE_KEYS.split(",");
 
+const alchemySepoliaUrl = process.env.ALCHEMY_SEPOLIA_URL + process.env.ALCHEMY_API_KEY;
+const infuraSepoliaUrl =
+    process.env.TRUFFLE_PROVIDER_URL + process.env.INFURA_API_KEY;
+console.error(`alchemy stuff: URL: ${alchemySepoliaUrl},  ${privateKeys[1]}`)
+console.log('private keys ', privateKeys);
+console.log('privateKeys[0] ', privateKeys[0]);
+
 module.exports = {
   /**
    * Networks define how you connect to your ethereum client and let you set the
@@ -89,19 +96,25 @@ module.exports = {
       network_id: "923020",
       from: "0x4858d3E1ae140F3897657922D72c3C35e800Ed60",
     },
-    sepolia: {
-      provider: function () {
-        return new HDWalletProvider(
-            privateKeys[1],
-            process.env.TRUFFLE_PROVIDER_URL + process.env.INFURA_API_KEY
-        );
-
-      },
-      // accounts: ["0x4858d3E1ae140F3897657922D72c3C35e800Ed60"],
+    infuraSepolia: {
+      provider: () => new HDWalletProvider(privateKeys[0], infuraSepoliaUrl),
       network_id: "11155111",
+      gas: 8000000, // Increased gas limit
+      gasPrice: 2000000000, // Adjust the gas price if needed
+      confirmations: 2,
+      timeoutBlocks: 200,
+      skipDryRun: true,
       from: "0xd36D0E01E468c982DA177A2E9f714935702213Aa",
-      // gas: 4465030,
-      networkCheckTimeout: 5000000,
+    },
+    alchemySepolia: {
+      provider: () => new HDWalletProvider(privateKeys[1], alchemySepoliaUrl),
+      network_id: '11155111',
+      gas: 6721975, // Adjusted based on Ganache deployment cost
+      gasPrice: 2000000000, // Setting a reasonable gas price (2 gwei) for Sepolia
+      confirmations: 2,
+      timeoutBlocks: 200,
+      skipDryRun: true,
+      from: "0xd36D0E01E468c982DA177A2E9f714935702213Aa",
     },
     //
     // An additional network, but with some advanced options…

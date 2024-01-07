@@ -1,27 +1,24 @@
 const HelloWorldContract = artifacts.require("HelloWorld");
 const assert = require("assert");
-require("dotenv").config();
-const Web3 = require("web3");
-// If using Ganache, should be set to "http://localhost:7545"
-const web3 = new Web3(
-    new Web3.providers.HttpProvider(process.env.TRUFFLE_PROVIDER_URL)
-);
-web3.eth.setProvider(Web3.givenProvider);
 
 contract("HelloWorld", function (accounts) {
     let helloWorldContractInstance;
 
-    // define contract address
-
     beforeEach(async () => {
         helloWorldContractInstance = await HelloWorldContract.deployed();
     });
-    it("should return Hello World!", async () => {
-        const contractMessage = await helloWorldContractInstance.sayHelloWorld();
+
+    it("should return the sent message", async () => {
+        const testMessage = "Hello World";
+        const response = await helloWorldContractInstance.emitMessage(testMessage);
+
+        // Extract the return value from the transaction response
+        const contractMessage = response.receipt.logs[0].args.message;
+
         assert.equal(
             contractMessage,
-            "Hello World",
-            "Hello World! was not returned"
+            testMessage,
+            `${testMessage} was not returned`
         );
     });
 });
