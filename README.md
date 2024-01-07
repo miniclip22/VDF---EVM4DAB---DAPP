@@ -97,6 +97,10 @@ cd truffle && truffle test --network <network_id>
 
 ### Migrate Solidity Smart Contracts
 
+```bash
+cd truffle && truffle migrate --network <network_id>
+```
+
 ### Deployment
 
 Deployment of the smart contracts to a blockchain is a crucial step in making the DApp functional. The deployment
