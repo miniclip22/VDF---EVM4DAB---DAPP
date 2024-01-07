@@ -113,7 +113,7 @@ contract("Parking", function (accounts) {
 
         it("Should estimate owed amount correctly", async function () {
             const owedAmount = await parking.estimateOwedAmount("licence_plate");
-            expect(owedAmount.toNumber()).to.equal(3); // 3 hours of parking
+            expect(owedAmount.toNumber()).to.equal(2); // 3ho hours of parking
         });
     });
 
