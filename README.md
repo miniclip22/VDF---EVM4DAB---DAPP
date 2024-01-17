@@ -10,18 +10,20 @@ parking management system, utilizing Ethereum-based smart contracts.
     - [Prerequisites](#prerequisites)
     - [Install Dependencies](#install-dependencies)
     - [Install Ganache and Truffle](#install-ganache-and-truffle)
+- [Final System Architecture](#final-system-architecture)  <!-- Inserted here -->
 - [Commands](#commands)
     - [Compile Solidity Smart Contracts](#compile-solidity-smart-contracts)
     - [Test Solidity Smart Contracts](#test-solidity-smart-contracts)
     - [Migrate Solidity Smart Contracts](#migrate-solidity-smart-contracts)
   - [Deployment](#deployment)
-    - [Run Dev Server](#run-dev-server)
-    - [Build for Production](#build-for-production)
+      - [Run Dev Server](#run-dev-server)
+      - [Build for Production](#build-for-production)
 - [Configure New EVM-Compatible Chains](#configure-new-evm-compatible-chains)
 - [Troubleshooting](#troubleshooting)
 - [Contributing](#contributing)
 - [License](#license)
 - [Contact Information](#contact-information)
+
 
 ## Introduction
 
@@ -55,6 +57,37 @@ cd client && npm install && cd ../truffle && npm install && cd ../
 ```bash
 npm install -g truffle ganache
 ```
+
+## Final System Architecture
+
+![Final System Architecture Diagram](Final-System-Architecture.png)
+
+The architecture delineates the framework and components of our Ethereum-based Parking DApp. Central to the system are
+the Solidity smart contracts, residing on the Ethereum Virtual Machine (EVM), which handle the business logic for
+parking session management.
+
+**Infura.io Ethereum Blockchain Nodes**: These nodes provide access to the Ethereum network, allowing us to execute
+smart contract calls and transactions without maintaining our own Ethereum node. Communication with these nodes is
+facilitated via JSON RPC, a stateless protocol enabling direct interaction with the blockchain.
+
+**Truffle Suite (from GitHub)**: Employed for development purposes, Truffle is a comprehensive suite that provides tools
+for compiling, testing, and deploying our smart contracts. It interfaces with the Infura nodes to deploy contracts to
+the EVM.
+
+**Web3 APIs**: This collection of libraries allows us to interact with a local or remote Ethereum node using HTTP, IPC,
+or WebSocket. It is the bridge between our frontend application and the Ethereum blockchain, enabling users to initiate
+transactions and contract methods, which are then sent to the EVM through JSON RPC.
+
+**EVM (Ethereum Virtual Machine)**: The EVM is the runtime environment for executing all smart contracts. It handles all
+transaction processing, contract state changes, and event logging.
+
+**Solidity Smart Contracts**: These are the predefined rules in code governing the parking sessions. They execute on the
+EVM and include functions to start/end parking sessions and process payments. Upon certain actions, they emit events
+captured by our frontend or backend for notification or logging purposes.
+
+The system supports the full lifecycle of deploying and interacting with smart contracts, designed for both
+blockchain-savvy users and those new to this technology, ensuring a comprehensive understanding of our Parking DApp's
+infrastructure.
 
 ## Commands
 
